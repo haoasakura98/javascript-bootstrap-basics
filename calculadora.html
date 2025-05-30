@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>APRENDENDO HTML</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+        <style>
+            #menu-principal ul{
+                display:flex;
+                list-style-type:none;
+                margin:0px;
+                padding:0px;
+            }
+            #menu-principal li{
+                margin:10px;
+            }
+            #menu-principal a{
+                text-decoration:none;
+            }
+        </style>
+
+    </head>
+
+    <body>
+    
+        <header>
+            <nav id="menu-principal" class="navbar navbar-expand-lg bg-light">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                    <a class="navbar-brand" href="img/logo.jpg"><img src="img/logo.jpg" alt="logo" width="30" height="24"></a>
+
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mercado.html">Dicas sobre mercado de CS</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+                            <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre mim</a></li>
+                            <li class="nav-item"><a class="nav-link" href="calculadora.html">Calculadora</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div>
+                <label for="primeironumero" class="form-label">A</label>
+                <input type="number" class="form-control" id="primeironumero" required />
+                <br>
+
+                <label for="segundonumero" class="form-label">B</label>
+                <input type="number" class="form-control" id="segundonumero" required />
+                <br>
+
+
+                <label for="operacao" class="form-label"></label>
+                <select id="operacao" class="form-select">
+                    <option value="soma">Somar</option>
+                    <option value="subtracao">Subtração</option>
+                    <option value="multiplicacao">Multiplicação</option>
+                    <option value="divisao">Divisão</option>
+                </select>
+                <br>
+
+                <button type="button" onclick="calcular()" class="btn btn-primary">Calcular</button>
+                <br>
+
+                <div id="resultado" class="mt-4 alert-info text-center" role="alert"></div>
+
+            </div>
+        </main>
+
+        <script src="java.js"></script>
+    </body>
+
+    <footer></footer>
+
+</html>
