@@ -3,6 +3,7 @@
 
 <head>
 	<title> Aprendendo HTML </title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
 	<style>
 
@@ -31,56 +32,95 @@
 
 <body>
 <header>
-	<nav id="menu-principal">
-	
-		<ul>
-			<li><a href="index.html">Home</a></li>
-			<li><a href="mercado.html">Dicas sobre mercado de CS</a></li>
-			<li><a href="contato.html">Contato</a></li>
-			<li><a href="sobre.html">Sobre mim</a></li>
-		</ul>
-		
-	</nav>
+    <nav id="menu-principal" class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <a class="navbar-brand" href="img/logo.jpg"><img src="img/logo.jpg" alt="logo" width="30" height="24"></a>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mercado.html">Dicas sobre mercado de CS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre mim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="calculadora.html">Calculadora</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </header>
 
-<main>
-	<h2>formulário simples com butões interativos para <strong>contato</strong></h2>
-	<form action="" method="POST">
+<main class="container my-5">
+	<h2>formulário simples com botões interativos para <strong>contato</strong></h2>
+	<form id="formContact" action="msgconfirmed.php" method="POST" class="border p-4 rounded shadow-sm bg-light">
 	
-		<fieldset>
-			<legend>Identificação</legend>
-				<label for="nome">Nome:</label>
-				<input type="text" id="nome" name="nome" minlength="2" maxlength="20" required />
+		<fieldset class="mb-4">
+			<legend class="mb-3">Identificação</legend>
+				<div class="mb-3">
+				<label for="nome" class="form-label">Nome:</label>
+				<input type="text" class="form-control" id="nome" name="nome" minlength="2" maxlength="20" required />
+				</div>
 				
-				<label for="email">Email:</label>
-				<input type="email" id="email" name="email" minlength="2" maxlength="60" required />
+				<div class="mb-3">
+				<label for="email" class="form-label">Email:</label>
+				<input type="email" class="form-control" id="email" name="email" minlength="2" maxlength="60" required />
+				</div>
 				
-				<label for="cpf">CPF:</label>
-				<input type="text" id="cpf" name="cpf" pattern="^\d{11}$" minlength="11" maxlength="11" inputmode="numeric" required />
+				<div class="mb-3">
+				<label for="cpf" class="form-label">CPF:</label>
+				<input type="text" class="form-control" id="cpf" name="cpf" pattern="^\d{11}$" minlength="11" maxlength="11" inputmode="numeric" required />
+				</div>
 		</fieldset>
 		
-		<fieldset>
-			<label for="tipo">Tipo</label>
+		<fieldset class="mb-4">
+			<div class="mb-3">
+			<label for="tipo" class="form-label"></label>
 			<legend>Tipo de Mensagem</legend>
-			<select id="tipo" name="tipo" required>
+			<select id="tipo" class="form-select" name="tipo" required>
 				<option value="feedback">Feedback</option>
 				<option value="support">Suporte</option>
 				<option value="others">Outros</option>
 			</select>
+			<div>
 		</fieldset>
 		
-		<fieldset>
-			<label for="msg">Mensagem</label>
-			<legend>Conteúdo</legend>
-			<textarea id="msg" name="msg" required></textarea>
+		<fieldset class="mb-4">
+			<div class="mb-3">
+			<label for="msg" class="form-label"></label>
+			<legend class=" mb-3">Mensagem</legend>
+			<textarea id="msg" class="form-control" name="msg" required></textarea>
+			</div>
 		</fieldset>
 		
-		<fieldset>
-			<button type="submit">Enviar</button>
-			<button type="reset">Limpar</button>
+		<fieldset class="mb-4">
+			<div class="mb-3">
+			<button type="submit" class="btn btn-primary">Enviar</button>
+			<button type="reset" class="btn btn-secondary">Limpar</button>
+			</div>
 		</fieldset>
 	</form>
+	<div id="feedbackmsg"></div>
 </main>
+
+	<script>
+		document.getElementById('formContact').addEventListener('submit', function(e) {
+			e.preventDefault();
+
+			const formData = new FormData(this);
+
+			fetch('msgconfirmed.php', {
+				method: 'POST',
+				body: formData
+			})
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('feedbackmsg').innerHTML = data;
+				this.reset();
+			})
+			.catch(error => {
+				document.getElementById('feedbackmsg').innerHTML=`<p class="alert alert-danger">Erro no envio: ${error}</p>`
+			});
+		});
+	</script>
 </body>
 
 
