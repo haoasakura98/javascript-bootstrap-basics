@@ -4,13 +4,16 @@
 <head>
 	<title> Aprendendo HTML </title>
 
-	<link rel="stylesheet" href="estilos.css">
-	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 	<style>
+
+		h1 {
+			text-align:center;
+		}
 
 		h1, h2, h3, h4, h5, h6{
 			color:blue;
-			text-align:center;
 		}
 
 		#menu-principal ul{
@@ -28,20 +31,49 @@
 			text-decoration:none;
 		}
 
+		th {
+			cursor:pointer;
+		}
+
+		.table-wrapper {
+            max-height: 400px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+		.table {
+			background-color: #ffffff;
+		}
+
+        .table th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background-color: #818181;
+        }
+
 	</style>
 </head>
 
 <body>
 
 <header>
-	<nav id="menu-principal">
+	<nav id="menu-principal" class="navbar navbar-expand-lg bg-light">
 	
-		<ul>
-			<li><a href="index.html">Home</a></li>
-			<li><a href="mercado.html">Dicas sobre mercado de CS</a></li>
-			<li><a href="contato.html">Contato</a></li>
-			<li><a href="sobre.html">Sobre mim</a></li>
-		</ul>
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse" id="navbarNav">
+
+			<a class="navbar-brand" href="img/logo.jpg"><img src="img/logo.jpg" alt="logo" width="30" height="24"></a>
+
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="mercado.html">Dicas sobre mercado de CS</a></li>
+					<li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+					<li class="nav-item"><a class="nav-link" href="sobre.html">Sobre mim</a></li>
+					<li class="nav-item"><a class="nav-link" href="calculadora.html">Calculadora</a></li>
+				</ul>
+			</div>
+		</div>
 		
 	</nav>
 </header>
@@ -51,63 +83,197 @@
 
 
 
-	<h1> Primeira Página HTML </h1>
+	<h1> Segunda Página HTML </h1>
+
+	<article>
 	<h2> Objetivos </h2>
-	<p> Criar uma página HTML utilizando o máximo de tags possíveis </p>
+	<p> Utilizar bootstrap para customizar a página de forma mais prática. <br>
+	Utilizar javascrip para dar interativa à tabela.</p>
+	<p> Adição de javascript para fazer uma calculadora funcional. <br>
+	Utilização do bootstrap para customizar a calculadora.</p>
+	</article>
+
 	
-	<h2> Formatadores de textos</h2>
-	<p>
-		Utilizar formatadores de textos como <br>
+	<div>
+		<h2> Construção de uma Tabela </h2>
+		<p>Este é um exemplo de uma tabela de controle dos itens que serão comercializados. <br>Alguns itens são comprados com meta de lucro de 2%
+			enquanto outros são comprados com meta de lucro de 10%</p>
 		
-		<b>NEGRITO</b>, <i>ITALÍCO</i>,<s>TACHADO</s>, <u>SUBLINHADO</u>, </u><small>PEQUENO</small><br>
-		
-		SUBSCRITO<sub>2</sub>, SOBESCRITO<sup>2</sup>, <mark>MARCADO</mark><br>
-		
-		<q>CITADO</q>
-	</p>
-	
-	<h2> Construção de uma Tabela </h2>
-	<table>
-	
-		<tr>
-			<th>Origem</th>
-			<th>SKIN</th>
-			<th>Preço de Compra</th>
-			<th>Preço de venda 2%</th>
-			<th>Preço de venda 10%</th>
-		</tr>
-	
-		<tr>
-			<td>marketcsgo</td>
-			<td>USP-S PrintStream (Factory New)</td>
-			<td>$80</td>
-			<td>$81,60</td>
-			<td>$88</td>
-		</tr>
-		
-		<tr>
-			<td>csfloat</td>
-			<td>Glock-18 FADE (Field-tested)</td>
-			<td>$40</td>
-			<td>$40,8</td>
-			<td>$44</td>
-		</tr>
-	
-		<tr>
-			<td>csmoney</td>
-			<td>AK-47 Leet Museo (Minimal Wear)</td>
-			<td>$100</td>
-			<td>$102</td>
-			<td>$110</td>
-		</tr>
-	
-	</table>
+		<div class="container mt-5">
+			<table id="tabelaskins" class="table table-bordered table-hover">
+
+				<thead>
+					<tr>
+						<th onClick="ordemtabela(origem)">Origem</th>
+						<th onClick="ordemtabela(nome)">SKIN</th>
+						<th onClick="ordemtabela(preco)">Preço de Compra</th>
+						<th>Preço de venda 2%</th>
+						<th>Preço de venda 10%</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr>
+						<td>marketcsgo</td>
+						<td>USP-S PrintStream (Factory New)</td>
+						<td>$80</td>
+						<td>$81,60</td>
+						<td>$88</td>
+					</tr>
+					
+					<tr>
+						<td>csfloat</td>
+						<td>Glock-18 FADE (Field-tested)</td>
+						<td>$40</td>
+						<td>$40,8</td>
+						<td>$44</td>
+					</tr>
+				
+					<tr>
+						<td>csmoney</td>
+						<td>AK-47 Leet Museo (Minimal Wear)</td>
+						<td>$100</td>
+						<td>$102</td>
+						<td>$110</td>
+					</tr>
+
+										<tr>
+						<td>csfloat</td>
+						<td>AK-47 Leet Museo (field-tested)</td>
+						<td>$75</td>
+						<td>$76,50</td>
+						<td>$82,50</td>
+					</tr>
+
+										<tr>
+						<td>csfloat</td>
+						<td>AWP PrintStream (Factory-New)</td>
+						<td>$500</td>
+						<td>$510</td>
+						<td>$550</td>
+					</tr>
+
+										<tr>
+						<td>skinout</td>
+						<td>USP-S Whiteout (Battle-Scarred)</td>
+						<td>$10</td>
+						<td>$10,20</td>
+						<td>$12</td>
+					</tr>
+
+										<tr>
+						<td>marketcsgo</td>
+						<td>Recoil Case</td>
+						<td>$1</td>
+						<td>$1,02</td>
+						<td>$1,10</td>
+					</tr>
+
+										<tr>
+						<td>csmoney</td>
+						<td>MAC-10 Stalker (Minimal Wear)</td>
+						<td>$33</td>
+						<td>$33,66</td>
+						<td>$36,3</td>
+					</tr>
+
+										<tr>
+						<td>csfloat</td>
+						<td>Shadow Daggers (Minimal Wear)</td>
+						<td>$233</td>
+						<td>$237,66</td>
+						<td>$256,3</td>
+					</tr>
+
+										<tr>
+						<td>csmoney</td>
+						<td>AK-47 Leet Museo (Minimal Wear)</td>
+						<td>$100</td>
+						<td>$102</td>
+						<td>$110</td>
+					</tr>
+
+										<tr>
+						<td>csmoney</td>
+						<td>AK-47 Jaguar (Well-Worn)</td>
+						<td>$90</td>
+						<td>$91,80</td>
+						<td>$99</td>
+					</tr>
+
+										<tr>
+						<td>marketcsgo</td>
+						<td>Sticker WARNING</td>
+						<td>$1</td>
+						<td>$1,02</td>
+						<td>$1,10</td>
+					</tr>
+
+										<tr>
+						<td>marketcsgo</td>
+						<td>AK-47 Slate (Well-Worn)</td>
+						<td>$10</td>
+						<td>$10,2</td>
+						<td>$11</td>
+					</tr>
+				</tbody>
+			
+			</table>
+		</div>
+	</div>
 </main>
 
 
 <footer>
 	<p>&copy; 2025 - Meu Portfólio</p>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+	let ordemCrescente = true;
+	const origem = 0;
+	const nome = 1;
+	const preco = 2;
+
+	function ordemtabela(colunaIndex) {
+		const tabelaskins = document.getElementById("tabelaskins");
+		const tbody = tabelaskins.tBodies[0];
+		const linhas = Array.from(tbody.rows);
+
+		const ths = tabelaskins.querySelectorAll("th");
+		ths.forEach((th, idx) => {
+			let texto = th.innerText.replace(" ▲", "").replace(" ▼", "");
+			if (idx === colunaIndex) {
+				th.innerText = texto + (ordemCrescente ? " ▲" : " ▼");
+			} else {
+				th.innerText = texto;
+			}
+		});
+
+		linhas.sort((a, b) => {
+			let valorA = a.cells[colunaIndex].innerText.trim().replace('$', '');
+			let valorB = b.cells[colunaIndex].innerText.trim().replace('$', '');
+
+			let numA = parseFloat(valorA);
+			let numB = parseFloat(valorB);
+
+			if (isNaN(numA) || isNaN(numB)) {
+				return ordemCrescente
+				? valorA.localeCompare(valorB)
+				: valorB.localeCompare(ValorA);
+			}
+
+			return ordemCrescente
+			? numA - numB
+			: numB - numA;
+		});
+
+		linhas.forEach(linha => tbody.appendChild(linha));
+
+		ordemCrescente = !ordemCrescente;
+	}
+</script>
 </body>
 
 
